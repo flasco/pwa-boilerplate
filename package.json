@@ -10,7 +10,8 @@
     "build": "node webpack/scripts/build-render.js --re-dll",
     "upgrade-dep": "yarn upgrade-interactive",
     "upgrade-latest-dep": "yarn upgrade-dep --latest",
-    "serve": "node webpack/scripts/serve.js"
+    "serve": "node webpack/scripts/serve.js -p 3006",
+    "serve:prod": "yarn build && yarn serve"
   },
   "devDependencies": {
     "@commitlint/cli": "^8.1.0",

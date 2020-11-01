@@ -4,17 +4,16 @@ const cors = require('koa2-cors');
 const staticServer = require('koa-static');
 const minimist = require('minimist');
 
-const { DIST_PATH, DEV_PATH } = require('../config/base');
+const { DIST_PATH } = require('../config/base');
 
 async function start() {
   const app = new Koa();
 
   const args = minimist(process.argv.slice(2));
-  const port = args.p || 3006;
-  const dev = args.mode !== 'prod';
-  console.log('isDev:', dev);
 
-  const root = path.resolve(__dirname, dev ? DEV_PATH : DIST_PATH);
+  const port = args.p || 3006;
+
+  const root = path.resolve(__dirname, DIST_PATH);
 
   app.use(
     staticServer(root, {
